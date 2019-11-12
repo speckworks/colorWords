@@ -1,0 +1,59 @@
+{
+  "quotes": [
+    {
+      "id": 2,
+      "quote": "Out beyond ideas of wrongdoing and rightdoing there is a field. I'll meet you there. When the soul lies down in that grass the world is too full to talk about.",
+      "author": "Rumi"
+    },
+    {
+      "id": 4,
+      "quote": "Stop acting so small. You are the universe in ecstatic motion.",
+      "author": "Rumi"
+    },
+    {
+      "id": 5,
+      "quote": "What you seek is seeking you.",
+      "author": "Rumi"
+    },
+    {
+      "id": 6,
+      "quote": "The minute I heard my first love story, I started looking for you, not knowinghow blind that was. Lovers don't finally meet somewhere. They're in each other all along.",
+      "author": "Rumi"
+    },
+    {
+      "id": 7,
+      "quote": "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.",
+      "author": "Rumi"
+    },
+    {
+      "id": 8,
+      "quote": "Don’t grieve. Anything you lose comes round in another form.",
+      "author": "Rumi"
+    },
+    {
+      "id": 9,
+      "quote": "Dance, when you're broken open. Dance, if you've torn the bandage off. Dance in the middle of the fighting. Dance in your blood. Dance when you're perfectly free.",
+      "author": "Rumi"
+    },
+    {
+      "id": 10,
+      "quote": "If you are irritated by every rub, how will your mirror be polished?",
+      "author": "Rumi"
+    },
+    {
+      "author": "Jamal Farah",
+      "quote": "Quote me if I was misquoted.",
+      "id": 12
+    },
+    {
+      "author": "Gabriel Kutik",
+      "quote": "Too Blessed to be Stressed.",
+      "id": 13
+    },
+    {
+      "author": "Oneil",
+      "quote": "Make it work.",
+      "id": 14
+    }
+  ]
+}
