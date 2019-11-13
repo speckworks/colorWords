@@ -3,7 +3,6 @@ class CreateQuotes < ActiveRecord::Migration[6.0]
     create_table :quotes do |t|
       t.string :author
       t.string :text
-
       t.timestamps
     end
   end
