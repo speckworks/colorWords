@@ -20,7 +20,9 @@ class UserquotesController < ApplicationController
     end
 
     def update
-    
+    @userquote = Userquote.find(params[:id])
+    @userquote.update(userquote_params)
+    render json: @userquote
     end
 
     private
