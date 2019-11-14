@@ -1,3 +1,3 @@
 class Userquote < ApplicationRecord
-    belongs_to :quotes
+    belongs_to :quote
 end

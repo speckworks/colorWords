@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_201039) do
 
   create_table "userquotes", force: :cascade do |t|
     t.integer "quote_id"
-    t.integer "username"
+    t.string "username"
   end
 
 end

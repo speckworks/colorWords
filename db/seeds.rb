@@ -52,12 +52,11 @@ quotes = Quote.create([
     }
   ])
 
-userQuote = Userquote.create(username:"jamaal", quote_id:"${Quote[0].id}")
-userQuote1 = Userquote.create(username:"stephen", quote_id:"${Quote[1].id}")
-userQuote2 = Userquote.create(username:"lyle", quote_id:"${Quote[2].id}")
-userQuote3 = Userquote.create(username:"chinomnso", quote_id:"${Quote[3].id}")
-userQuote4 = Userquote.create(username:"ali", quote_id:"${Quote[4].id}")
-
+userQuote = Userquote.create(username:"jamaal", quote_id:Quote.first.id)
+userQuote1 = Userquote.create(username:"stephen", quote_id:Quote.second.id)
+userQuote2 = Userquote.create(username:"lyle", quote_id:Quote.third.id)
+userQuote3 = Userquote.create(username:"chinomnso", quote_id:Quote.fourth.id)
+userQuote4 = Userquote.create(username:"ali", quote_id:Quote.fifth.id)
 
 
   puts "Seeds Planted."
