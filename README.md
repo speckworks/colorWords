@@ -14,7 +14,7 @@ Added a feature that allows the User Quote string to be reversed and randomly Up
 </p>
 </blockquote>
 <hr></hr>
-  <h3><a href="https://github.com/speckworks/colorWords" >Check it out the Source Code</a></h3>
+  <h3><a href="https://github.com/speckworks/colorWords" >Check out the Source Code</a></h3>
 <hr></hr>
 <p><strong>Built With:</strong></p>
 <ul>
