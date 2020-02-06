@@ -10,26 +10,24 @@
 puts 'Fetching Quote data...'
 
   categories = ["inspire","management","sports","life","funny","love","art","students"]
-
   
+  categories.each do |category|
+  request_url = "http://quotes.rest/qod.json?category=#{category}"
+  request = RestClient::Request.execute(
+    method: :get,
+    url: request_url,
+    headers: {
+      "Accept": "application/json"
+    })
 
-  # categories.each do |category|
-  # request_url = "http://quotes.rest/qod.json?category=#{category}"
-  # request = RestClient::Request.execute(
-  #   method: :get,
-  #   url: request_url,
-  #   headers: {
-  #     "Accept": "application/json"
-  #   })
-
-  # contents = JSON.parse(request)
-  # text = contents["contents"]["quotes"][0]["quote"]
-  # author = contents["contents"]["quotes"][0]["author"]
-  # Quote.create(text:text,
-  #   author:author,
-  #   category:"#{category}"
-  #   )
-  # end
+  contents = JSON.parse(request)
+  text = contents["contents"]["quotes"][0]["quote"]
+  author = contents["contents"]["quotes"][0]["author"]
+  Quote.create(text:text,
+    author:author,
+    category:"#{category}"
+    )
+  end
 
 
   # author = JSON.parse(request["contents"]["author"])
