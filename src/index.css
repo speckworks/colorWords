@@ -1,19 +1,44 @@
 
 @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
 
-.quote-div {
-width:250p;  
-flex-wrap: wrap;
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.quote-div { 
+border-radius: 10px;
+width:1000px;
+grid-row: auto;
 padding:10px;
 font-size: large;
 color:honeydew;
-background-color: #2f4353;
 background-image : url("./assets/papyrus.png");
+background-repeat: repeat;
 text-align: center;
+animation: 1s ease-out 0s 1 slideInFromLeft;
+
 }
 
+/* Added for aesthetics */ body {margin: 0;font-family: "Segoe UI", Arial, Helvetica, Sans Serif;} a {text-decoration: none; display: inline-block; margin-right: 10px; color:#fff;}
+
 h3{
-width: 250px;
+  animation: 1s ease-out 0s 1 slideInFromRight;
+  width: 750px;
 border-radius: 10px;
 text-align: center;
 font-family: 'Open Sans', sans-serif;
@@ -37,6 +62,9 @@ background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
   align-items: center;
   margin: 0 auto;
   width:1000px;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+
+  
 }
 
 .title {
