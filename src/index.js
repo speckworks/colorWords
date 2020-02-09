@@ -1,148 +1,168 @@
 
-
-
 const createQuoteSnippet = document.getElementById('#quote-snippet')
-let quoteContainer = document.createElement('div')
 let buttonListener = document.querySelector('.button')
+let quoteDiv = document.querySelector('#quote-div')
 
 
+buttonListener.addEventListener('click',  //initial userquote generation eventlistener
+(event) => {
+
+    let userNameEntered = document.querySelector('#new-user').value
+
+    if (userNameEntered !== '') {
+
+            //original fetch to rails quotes db, returning json object with quote 
+            fetch("http://localhost:3000/quotes")
+            .then(res => res.json())
+            .then((quotesArr) =>{
+            //create initial Userquote
+            let randomQuoteObj = quotesArr[Math.floor(Math.random() * quotesArr.length)];
+            let userNameContainer = document.createElement('h3')
+            let quoteContainer = document.createElement('span')
+            let innerQuoteDiv = document.createElement('div')
+            innerQuoteDiv.style.borderRadius = "25px";
+            // quoteDiv.style.backgroundColor = "turquoise"
+            quoteDiv.style.borderRadius = "15px"
+            // quoteContainer.style.backgroundColor = "coral"
+            quoteDiv.appendChild(innerQuoteDiv)
+            innerQuoteDiv.appendChild(userNameContainer)
+            innerQuoteDiv.appendChild(quoteContainer)
+            userNameContainer.innerText = userNameEntered
+            quoteContainer.innerText = randomQuoteObj.text + " "+"-"+ randomQuoteObj.author 
+            quoteContainer.textAlign = "center"
+
+            //create delete button on userQuote
+            let deleteButton = document.createElement('button')
+            deleteButton.setAttribute('class', 'btn');
+            deleteButton.innerHTML = 'delete';
+            innerQuoteDiv.appendChild(deleteButton)
+
+            //reverse text button
+            let reverseTextButton = document.createElement('button')
+            innerQuoteDiv.appendChild(reverseTextButton)
+            reverseTextButton.innerText = "Reverse"
+            reverseTextButton.addEventListener("click", function(event){
+                reverseTextFunction(quoteContainer,randomQuoteObj)
+        })
+
+            
+            // this fetch will persist userquote to database delete userquotes is also here
+            let userQuoteId = randomQuoteObj.id
+            fetch(`http://localhost:3000/userquotes`, {
+                method:'POST',
+                headers: { 
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "username":userNameEntered,
+                    "quote_id":userQuoteId
+                })
+            }).then((resp) => resp.json())
+            .then((respObj) => {
+                // console.log(respObj)
+                // console.log(
+                //     quotesArr[(respObj.quote_id)-1].text
+                // )
+
+                //delete userQuote from the database with callback "makeDeleteFetch" Function
+                innerQuoteDiv.setAttribute('id',respObj.id)
+                deleteButton.setAttribute('id',respObj.id)
+                // debugger;
+
+                //this is the eventListener to Remove a userQuote from the database
+                deleteButton.addEventListener('click', (event) => {
+                makeDeleteFetch(event)
+            
+                })//inside remove quote delete event listener
+            })//inside 2nd then of respObj after post to userquotes
 
 
-// const quotesUl = document.getElementById('quote-list')
-// const quotesForm = document.querySelector('#new-quote-form')
-// const colorWordsH1 = document.querySelector('#h1')
+            //update UserQuote
+            let updateQuoteBtn = document.createElement('button')
+            updateQuoteBtn.setAttribute('class','btn');
+            updateQuoteBtn.innerHTML = 'update';
+            innerQuoteDiv.appendChild(updateQuoteBtn)
+            //update UserQuote EventListener
+            updateQuoteBtn.addEventListener('click', 
+            ()=> { 
+                let randomQuoteObjUpdater = quotesArr[Math.floor(Math.random() * quotesArr.length)];
+                quoteContainer.innerText = randomQuoteObjUpdater.text + " "+"-"+ randomQuoteObjUpdater.author
+                let idUpdate = randomQuoteObjUpdater.id
+                console.log(randomQuoteObjUpdater.id)
+                let userQuoteId = innerQuoteDiv.id
+                // debugger;
+                    fetch(`http://localhost:3000/userquotes/${userQuoteId}`, {
+                        method:'PATCH',
+                        headers: { 
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            "id":userQuoteId,
+                            "quote_id": idUpdate,
+                            "username": userNameEntered
+                        })
+                    })
+                    .then((res) => res.json())
+                    .then((updatedQuote) => {
+                        // console.log(updatedQuote)
+                    })
+            }) //inside eventListener on click to Update userQuote
+            
+            
 
 
+        })//inside 2nd .then from initial fetch post
+    } //inside if statement for username validation
+    else{usernameValidationAlert()}
 
 
-// //original fetch to db.json
-// fetch("http://localhost:3000/quotes")
-// .then(res => res.json())
-// .then((quotesArr) => {
-//     // debugger;  
-//     console.log(quotesArr)  
-//     quotesArr.forEach((quote) => {
-//         // turnQuotetoHTML(quote)
-//     })// end of .forEach
-// })// end of the second .then
-
-
-
-
-
-
-
-//create a New Quote
-// quotesForm.addEventListener("submit", (event) => {
-//     event.preventDefault()
-//     // console.log(event.target["author"].value)
-//     // console.log(event.target["new-quote"].value)
-//     let newAuthor = event.target["author"].value
-//     let newQuote = event.target["new-quote"].value
-//     fetch(`http://localhost:3000/quotes`, {
-//       method:'POST',
-//      headers: { 
-//          'Content-type': 'application/json'
-//      },
-//      body: JSON.stringify({
-//          "author": newAuthor,
-//          "quote": newQuote
-//       })
-//     }).then((res) => res.json())
-//     .then((helloQuote) => {
-//         let quoteLi = document.createElement('li')
-//         quoteLi.style.listStyle ='none'
-//         quoteLi.id = `${helloQuote.id}`
-//         quoteLi.innerHTML = `<blockquote>
-//         <p>${helloQuote.quote}</p>
-//         <footer>${helloQuote.author}</footer><br>
-//         <button class='btn-danger'>Delete</button>
-//         <div id="button-div"> 
-//       <button class="update-button">Update  Quote</button>
-//       </div>
-//         </blockquote>`    
-//         quotesUl.append(quoteLi)
-//     })
-// })//inside create new Quote
     
+})//inside initial userquote generation eventListener
 
 
-// function turnQuotetoHTML(quote){
-//     let quoteLi = document.createElement('li')
-//     quoteLi.style.listStyle ='none'
-//     quoteLi.id = `${quote.id}`
-//     quoteLi.innerHTML = `<blockquote>
-//     <p>${quote.quote}</p>
-//     <footer>${quote.author}</footer><br>
-//     <button class='btn-danger'>Delete</button><br>
-//     <button class="update-button">Update Quote</button>
-  
-//     </blockquote>`    
-//     quotesUl.append(quoteLi)
+function usernameValidationAlert(){
+     alert("Please enter a valid username.")
+}
 
-//     //delete quote
-//     let deleteButton = quoteLi.querySelector('.btn-danger')
-//     deleteButton.addEventListener("click", () => {
-//         console.log(quote, quoteLi)
-//         fetch(`http://localhost:3000/quotes/${quote.id}`,{
-//             method: "DELETE"
-//         }) //end of fetch
-//         .then((res) => res.json())
-//         .then((byebyeQuote) => {
-//             console.log(byebyeQuote)
-//             quoteLi.remove()
-//         })
-//     })
-
-// }//end of creating LIs 
+//this makeDeleteFetch function deletes userQuote from Database And removes div from front end
+function makeDeleteFetch(){
+    // debugger;
+    // console.log(event.target)
+    let removeQuoteId = event.target.id
+    return fetch(`http://localhost:3000/userquotes/${removeQuoteId}`, {
+        method: "delete"
+    })
+    .then(() => {
+        let divForRemoval = document.getElementById(removeQuoteId)
+        divForRemoval.remove()  
+    }) // inside delete fetch
+}//inside makeDelete Callback
 
 
-//Update an existing Quote
-    // let updateQuoteBtn = document.querySelector('.update-button')
-    // updateQuoteBtn.addEventListener('click', 
-    // ()=> { 
-    //     console.log("clicking update")
-    // let updateQuoteForm = document.createElement('form')
-    //     updateQuoteForm.innerHTML = `
-    //     <form id="update-quote-form">
-    //     <div class="form-group">
-    //       <label for="update-quote">Update My Colorful Quote</label>
-    //       <input type="text" class="form-control" id="update-quote" placeholder="Color. Passion. Reason.">
-    //     </div>
-    //     <div class="form-group">
-    //       <label for="Author">Author</label>
-    //       <input type="text" class="form-control" id="author" placeholder="J. Speck">
-    //     </div>
-    //     <button type="submit" class="btn btn-primary">Submit</button>
-    //     </form>`
-    //   quoteLi.append(updateQuoteForm)
-    //     updateQuoteForm.addEventListener("submit", (event) => {
-    //         event.preventDefault()
-    //         console.log("clicking update")
-    //         // console.log(event.target["author"].value)
-    //         // console.log(event.target["update-quote"].value)
-    //         // console.log(event.target["id"].value)
-    //         // let quoteUpdate = event.target["quote"].value
-    //         // let authorUpdate = event.target["author"].value
-    //         // let quoteId = event.target["id"].value
-    
-    //         fetch(`http://localhost:3000/quotes`, {
-    //             method:'PATCH',
-    //             headers: { 
-    //                 'Content-type': 'application/json'
-    
-    //             },
-    //             body: JSON.stringify({
-    //                 "id": quoteId,
-    //                 "quote": quoteUpdate,
-    //                 "author": authorUpdate
-    //             })
-    //         })
-    //         .then((res) => res.json)
-    //         .then((updatedQuote) => {
-    //             console.log(updatedQuote)
-    //         })
-    //     }) //inside click Update Quote Event 
-    // })
+
+function reverseTextFunction (quoteContainer, randomQuoteObj){
+    let str = quoteContainer.innerText
+    // debugger;
+    function reverseString(){
+      return str.split("").reverse().join("")
+    //   debugger;
+    }
+    // console.log(reverseString())
+    quoteContainer.innerText = reverseString()
+    // console.log("inside the reverse function")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
