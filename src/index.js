@@ -12,7 +12,7 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
     if (userNameEntered !== '') {
 
             //original fetch to rails quotes db, returning json object with quote 
-            fetch("http://localhost:3000/quotes")
+            fetch("https://colorwords-backend.herokuapp.com/quotes")
             .then(res => res.json())
             .then((quotesArr) =>{
             //create initial Userquote
@@ -48,7 +48,7 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             
             // this fetch will persist userquote to database delete userquotes is also here
             let userQuoteId = randomQuoteObj.id
-            fetch(`http://localhost:3000/userquotes`, {
+            fetch(`https://colorwords-backend.herokuapp.com/userquotes`, {
                 method:'POST',
                 headers: { 
                     'Content-type': 'application/json'
@@ -91,7 +91,7 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
                 console.log(randomQuoteObjUpdater.id)
                 let userQuoteId = innerQuoteDiv.id
                 // debugger;
-                    fetch(`http://localhost:3000/userquotes/${userQuoteId}`, {
+                    fetch(`https://colorwords-backend.herokuapp.com/userquotes/${userQuoteId}`, {
                         method:'PATCH',
                         headers: { 
                             'Content-type': 'application/json'
@@ -129,7 +129,7 @@ function makeDeleteFetch(){
     // debugger;
     // console.log(event.target)
     let removeQuoteId = event.target.id
-    return fetch(`http://localhost:3000/userquotes/${removeQuoteId}`, {
+    return fetch(`https://colorwords-backend.herokuapp.com/userquotes${removeQuoteId}`, {
         method: "delete"
     })
     .then(() => {
