@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,7 +13,6 @@
   <div>
   <h1 id="h1" class="title">Color Words</h1>
   </div>
-  <h2 id="quote-snippet"></h2>
   <div>
       <form id="User-Input-Field">
         <div class="form-group">
@@ -25,22 +23,24 @@
     </div>
     <hr>
   <div class="ul-wrapper">
-    <ul class="button">
-<button class="button button1 inspire">Inspire</button>
-<button class="button button2 mgmt">Mgmt</button>
-<button class="button button3 sports">Sports</button>
-<button class="button button4 life">Life</button>
-<button class="button button5 funny">Funny</button>
-<button class="button button6 love">Love</button>
-<button class="button button7 art">Art</button>
+    <ul class="button-container">
+      <div class="button">
+<button class="button button1">Inspire</button>
+<button class="button button2">Management</button>
+<button class="button button3">Sports</button>
+<button class="button button4">Life</button>
+<button class="button button5">Funny</button>
+<button class="button button6">Love</button>
+<button class="button button7">Art</button>
+      </div>
     </ul>
   </div>
   <div id="quote-div" class="quote-div">
     <br></div>
   <script type="text/javascript">
     window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
-    </script>
-      
+    </script>   
   <script defer src="src/index.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
 </body>
 </html>

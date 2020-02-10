@@ -1,5 +1,5 @@
 
-const createQuoteSnippet = document.getElementById('#quote-snippet')
+// const createQuoteSnippet = document.getElementById('#quote-snippet')
 let buttonListener = document.querySelector('.button')
 let quoteDiv = document.querySelector('#quote-div')
 
@@ -19,12 +19,11 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             //create initial Userquote
             let quoteObj = quotesArr.filter(quote => (quote.category == `${categoryPressed}`
             ))
-            // console.log(categoryPressed, "catpress")
-            // console.log(quoteObj)
             let userNameContainer = document.createElement('h3')
             let quoteCategory = document.createElement('h4')
             let quoteContainer = document.createElement('h5')
             let innerQuoteDiv = document.createElement('div')
+            innerQuoteDiv.className = "card"
             innerQuoteDiv.style.borderRadius = "25px";
             // quoteDiv.style.backgroundColor = "turquoise"
             quoteDiv.style.borderRadius = "15px"
