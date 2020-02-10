@@ -3,11 +3,11 @@ const createQuoteSnippet = document.getElementById('#quote-snippet')
 let buttonListener = document.querySelector('.button')
 let quoteDiv = document.querySelector('#quote-div')
 
-
 buttonListener.addEventListener('click',  //initial userquote generation eventlistener
 (event) => {
-
+    console.log(event.target)
     let userNameEntered = document.querySelector('#new-user').value
+    let categoryPressed = event.target.innerText.toLowerCase()
 
     if (userNameEntered !== '') {
 
@@ -15,10 +15,15 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             fetch("https://colorwords-backend.herokuapp.com/quotes")
             .then(res => res.json())
             .then((quotesArr) =>{
+            // console.log(quotesArr)
             //create initial Userquote
-            let randomQuoteObj = quotesArr[Math.floor(Math.random() * quotesArr.length)];
+            let quoteObj = quotesArr.filter(quote => (quote.category == `${categoryPressed}`
+            ))
+            // console.log(categoryPressed, "catpress")
+            // console.log(quoteObj)
             let userNameContainer = document.createElement('h3')
-            let quoteContainer = document.createElement('span')
+            let quoteCategory = document.createElement('h4')
+            let quoteContainer = document.createElement('h5')
             let innerQuoteDiv = document.createElement('div')
             innerQuoteDiv.style.borderRadius = "25px";
             // quoteDiv.style.backgroundColor = "turquoise"
@@ -26,9 +31,12 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             // quoteContainer.style.backgroundColor = "coral"
             quoteDiv.appendChild(innerQuoteDiv)
             innerQuoteDiv.appendChild(userNameContainer)
+            innerQuoteDiv.appendChild(quoteCategory)
             innerQuoteDiv.appendChild(quoteContainer)
-            userNameContainer.innerText = userNameEntered
-            quoteContainer.innerText = randomQuoteObj.text + " "+"-"+ randomQuoteObj.author 
+            userNameContainer.innerText = "User:" + " " + userNameEntered 
+            // console.log(quoteObj[0].text, "afterappended")
+            quoteCategory.innerText = "Category:"+categoryPressed + " "
+            quoteContainer.innerText = quoteObj[0].text + " "+"-"+ quoteObj[0].author 
             quoteContainer.textAlign = "center"
 
             //create delete button on userQuote
@@ -42,12 +50,12 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             innerQuoteDiv.appendChild(reverseTextButton)
             reverseTextButton.innerText = "Reverse"
             reverseTextButton.addEventListener("click", function(event){
-                reverseTextFunction(quoteContainer,randomQuoteObj)
+                reverseTextFunction(quoteContainer,quoteObj)
         })
 
             
             // this fetch will persist userquote to database delete userquotes is also here
-            let userQuoteId = randomQuoteObj.id
+            let userQuoteId = quoteObj.id
             fetch(`https://colorwords-backend.herokuapp.com/userquotes`, {
                 method:'POST',
                 headers: { 
@@ -85,10 +93,10 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             //update UserQuote EventListener
             updateQuoteBtn.addEventListener('click', 
             ()=> { 
-                let randomQuoteObjUpdater = quotesArr[Math.floor(Math.random() * quotesArr.length)];
-                quoteContainer.innerText = randomQuoteObjUpdater.text + " "+"-"+ randomQuoteObjUpdater.author
-                let idUpdate = randomQuoteObjUpdater.id
-                console.log(randomQuoteObjUpdater.id)
+                let quoteObjUpdater = quotesArr[Math.floor(Math.random() * quotesArr.length)];
+                quoteContainer.innerText = quoteObjUpdater.text + " "+"-"+ quoteObjUpdater.author
+                let idUpdate = quoteObjUpdater.id
+                console.log(quoteObjUpdater.id)
                 let userQuoteId = innerQuoteDiv.id
                 // debugger;
                     fetch(`https://colorwords-backend.herokuapp.com/userquotes/${userQuoteId}`, {
@@ -140,7 +148,7 @@ function makeDeleteFetch(){
 
 
 
-function reverseTextFunction (quoteContainer, randomQuoteObj){
+function reverseTextFunction (quoteContainer, quoteObj){
     let str = quoteContainer.innerText
     // debugger;
     function reverseString(){

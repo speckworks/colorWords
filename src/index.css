@@ -1,7 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
-
-
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -22,7 +20,8 @@
 
 .quote-div { 
 border-radius: 10px;
-width:1000px;
+width:25%;
+display:grid;
 grid-row: auto;
 padding:10px;
 font-size: large;
@@ -31,19 +30,37 @@ background-image : url("./assets/papyrus.png");
 background-repeat: repeat;
 text-align: center;
 animation: 1s ease-out 0s 1 slideInFromLeft;
-
 }
 
 /* Added for aesthetics */ body {margin: 0;font-family: "Segoe UI", Arial, Helvetica, Sans Serif;} a {text-decoration: none; display: inline-block; margin-right: 10px; color:#fff;}
 
 h3{
-  animation: 1s ease-out 0s 1 slideInFromRight;
-  width: 750px;
+width: 50%;
 border-radius: 10px;
 text-align: center;
 font-family: 'Open Sans', sans-serif;
 background-color: #2f4353;
 background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+padding:10px;
+}
+
+
+h4{
+  width: 50%;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #2f4353;
+  padding:10px;
+  }
+
+h5{
+  width: 50%;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #2f4353;
+  padding:3px;
 }
 
 .button {
@@ -57,6 +74,7 @@ background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  word-wrap: break-word;
  }
 .ul-wrapper {
   align-items: center;
@@ -70,14 +88,20 @@ background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
 .title {
   font-family: Garamond;
   font-size: 60px;
+  text-align: center;
+}
+
+body{
+  text-align: center;
 }
 
 .container{
     height: 200px;
+    width:100%;
     background-color: red; /* For browsers that do not support gradients */
     background-image: linear-gradient(red, yellow); /* Standard syntax (must be last) */
     background-repeat: no-repeat;
-    width:300px;
+    text-align: center;
 }
   
 .button1 {background-color: #4CAF50;
@@ -126,10 +150,6 @@ background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
   height: 200px;
   background-color: red; /* For browsers that do not support gradients */
   background-image: linear-gradient(red, yellow); /* Standard syntax (must be last) */
-}
-
-#h1 {
-  text-align: center;
 }
 
 .update-button {
