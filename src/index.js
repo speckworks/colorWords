@@ -1,29 +1,31 @@
 
 // const createQuoteSnippet = document.getElementById('#quote-snippet')
 let buttonListener = document.querySelector('.button')
-let quoteDiv = document.querySelector('#quote-div')
 
 buttonListener.addEventListener('click',  //initial userquote generation eventlistener
 (event) => {
     console.log(event.target)
     let userNameEntered = document.querySelector('#new-user').value
     let categoryPressed = event.target.innerText.toLowerCase()
-
+    
     if (userNameEntered !== '') {
-
-            //original fetch to rails quotes db, returning json object with quote 
-            fetch("https://colorwords-backend.herokuapp.com/quotes")
-            .then(res => res.json())
-            .then((quotesArr) =>{
+        
+        //original fetch to rails quotes db, returning json object with quote 
+        fetch("https://colorwords-backend.herokuapp.com/quotes")
+        .then(res => res.json())
+        .then((quotesArr) =>{
             // console.log(quotesArr)
             //create initial Userquote
             let quoteObj = quotesArr.filter(quote => (quote.category == `${categoryPressed}`
             ))
+            let quoteDiv = document.querySelector('#quote-div')
+            let innerQuoteDiv = document.createElement('div')
             let userNameContainer = document.createElement('h3')
             let quoteCategory = document.createElement('h4')
             let quoteContainer = document.createElement('h5')
-            let innerQuoteDiv = document.createElement('div')
-            innerQuoteDiv.className = "card"
+            innerQuoteDiv.className = "quote-div"
+            userNameContainer.className = "card"
+            quoteCategory.className = "card"
             innerQuoteDiv.style.borderRadius = "25px";
             // quoteDiv.style.backgroundColor = "turquoise"
             quoteDiv.style.borderRadius = "15px"
@@ -48,6 +50,7 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             let reverseTextButton = document.createElement('button')
             innerQuoteDiv.appendChild(reverseTextButton)
             reverseTextButton.innerText = "Reverse"
+            reverseTextButton.className = "btn"
             reverseTextButton.addEventListener("click", function(event){
                 reverseTextFunction(quoteContainer,quoteObj)
         })

@@ -20,11 +20,20 @@
 
 .quote-div { 
 border-radius: 10px;
-width:100%;
-display:grid;
-grid-gap: 5px;
-grid-auto-flow: column;
-grid-template-columns: repeat(auto-fill, 250px);
+display: grid;
+grid-template-columns: 2000px;
+/* grid: "user   " 50px
+      "cat   " 50px
+      "quote " auto
+      "butt1" 50px
+      "butt2" 50px
+      "butt3" 50px  
+     / 250px; */
+grid-template-columns: repeat(3, 1fr);
+grid-auto-rows: auto;
+grid-row-gap: 1rem;
+grid-gap: 10px;
+height: 200px;
 padding:10px;
 font-size: large;
 color:honeydew;
@@ -36,19 +45,35 @@ word-break: break-all;
 animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+#quote-div { 
+  border-radius: 10px;
+  width:100%;
+  height: 200px;
+  padding:10px;
+  font-size: large;
+  color:honeydew;
+  background-repeat: repeat;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-all;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+  }
+
 .card{
   width: 250px;
+  height: 30px;
 }
 /* Added for aesthetics body {margin: 0;font-family: "Segoe UI", Arial, Helvetica, Sans Serif;} a {text-decoration: none; display: inline-block; margin-right: 10px; color:#fff;} */
 
 h3{
+vertical-align: text-top;
 width: 90%;
 border-radius: 10px;
 text-align: center;
 font-family: 'Open Sans', sans-serif;
 background-color: #2f4353;
 background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
-padding:10px;
+padding:2px;
 }
 
 
@@ -68,6 +93,10 @@ h5{
   font-family: 'Open Sans', sans-serif;
   background-color: #2f4353;
   padding:3px;
+}
+
+.btn{
+  height: 40px;
 }
 
 .button {
