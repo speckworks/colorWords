@@ -1,4 +1,11 @@
 
+
+body{
+  display: flex;
+  flex-flow: column;
+  /* text-align: center; */
+}
+
 @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
 @keyframes slideInFromLeft {
   0% {
@@ -19,12 +26,9 @@
 }
 
 .quote-div { 
-position:relative;  
+display: inline-block;
 border-radius: 10px;
-display: -moz-grid;
-flex-wrap: WR;
-/* grid-template-rows: repeat(3, 1fr); */
-height: 450px;
+height: 500px;
 width:100%;
 padding:10px;
 font-size: large;
@@ -35,18 +39,21 @@ background-repeat: repeat;
 word-wrap: break-word;
 word-break: break-all;
 animation: 1s ease-out 0s 1 slideInFromLeft;
-
 }
 
 
 .card { 
+  display: inline-block;
   width: 90%;
   height: 50px;
-  grid-template-rows: repeat(auto-fill, minmax(25%, 3fr));
 }
 #quote-div { 
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 4fr);
+  grid-column-gap: 2px;
   position: relative;
-  width:33%;
+  width:90%;
   height: 100%;
   padding:10px;
   font-size: large;
@@ -55,7 +62,17 @@ animation: 1s ease-out 0s 1 slideInFromLeft;
   word-wrap: break-word;
   word-break: break-all;
   animation: 1s ease-out 0s 1 slideInFromLeft;
+   
   }
+  
+  .item:nth-child(4) {
+   order: -1;
+  }
+  
+  .item:nth-child(2) {
+    order: 1;
+  }
+  
 
 .card{
   display: grid;
@@ -123,6 +140,7 @@ h5{
  .button-container {
   background-color: #000000; /* Green */
   border-radius: 25px;
+  width: 90%;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -138,6 +156,7 @@ h5{
 
 .ul-wrapper {
   align-items: center;
+  padding:20px;
   margin: 0 auto;
   width:100%;
   animation: 1s ease-out 0s 1 slideInFromLeft;
@@ -147,12 +166,6 @@ h5{
   font-family: Garamond;
   font-size: 60px;
   text-align: center;
-}
-
-body{
-  display: flex;
-  flex-flow: column;
-  /* text-align: center; */
 }
 
 .container{
