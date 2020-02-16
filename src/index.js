@@ -24,6 +24,7 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             let quoteCategory = document.createElement('h4')
             let quoteContainer = document.createElement('h5')
             innerQuoteDiv.className = "quote-div"
+            innerQuoteDiv.id = "quote-div"
             userNameContainer.className = "card"
             quoteCategory.className = "card"
             innerQuoteDiv.style.borderRadius = "25px";
@@ -37,9 +38,10 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             userNameContainer.innerText = "User:" + " " + userNameEntered 
             // console.log(quoteObj[0].text, "afterappended")
             quoteCategory.innerText = "Category:"+categoryPressed + " "
-            quoteContainer.innerText = quoteObj[0].text + " "+"-"+ quoteObj[0].author 
+            // let magicNumber = Math.floor((Math.random(quotesArr.length) * 10))
+            // console.log("magic number", magicNumber)
+            quoteContainer.innerText = quoteObj[2].text + " "+"-"+ quoteObj[2].author 
             quoteContainer.textAlign = "center"
-
             //create delete button on userQuote
             let deleteButton = document.createElement('button')
             deleteButton.setAttribute('class', 'btn');

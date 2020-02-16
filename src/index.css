@@ -19,51 +19,58 @@
 }
 
 .quote-div { 
+position:relative;  
 border-radius: 10px;
-display: grid;
-grid-template-columns: 2000px;
-/* grid: "user   " 50px
-      "cat   " 50px
-      "quote " auto
-      "butt1" 50px
-      "butt2" 50px
-      "butt3" 50px  
-     / 250px; */
-grid-template-columns: repeat(3, 1fr);
-grid-auto-rows: auto;
-grid-row-gap: 1rem;
-grid-gap: 10px;
-height: 200px;
+display: -moz-grid;
+flex-wrap: WR;
+/* grid-template-rows: repeat(3, 1fr); */
+height: 450px;
+width:100%;
 padding:10px;
 font-size: large;
 color:honeydew;
 background-image : url("./assets/papyrus.png");
 background-repeat: repeat;
-text-align: center;
+/* text-align: center; */
 word-wrap: break-word;
 word-break: break-all;
 animation: 1s ease-out 0s 1 slideInFromLeft;
+
 }
 
+
+.card { 
+  width: 90%;
+  height: 50px;
+  grid-template-rows: repeat(auto-fill, minmax(25%, 3fr));
+}
 #quote-div { 
-  border-radius: 10px;
-  width:100%;
-  height: 200px;
+  position: relative;
+  width:33%;
+  height: 100%;
   padding:10px;
   font-size: large;
   color:honeydew;
   background-repeat: repeat;
-  text-align: center;
   word-wrap: break-word;
   word-break: break-all;
   animation: 1s ease-out 0s 1 slideInFromLeft;
   }
 
 .card{
-  width: 250px;
+  display: grid;
+  grid-row: auto;
+  width: 80%;
   height: 30px;
 }
 /* Added for aesthetics body {margin: 0;font-family: "Segoe UI", Arial, Helvetica, Sans Serif;} a {text-decoration: none; display: inline-block; margin-right: 10px; color:#fff;} */
+
+ul{
+  align-items: center;
+  margin: 0 auto;
+  width:80%;
+  height: 100%;
+}
 
 h3{
 vertical-align: text-top;
@@ -143,7 +150,9 @@ h5{
 }
 
 body{
-  text-align: center;
+  display: flex;
+  flex-flow: column;
+  /* text-align: center; */
 }
 
 .container{
