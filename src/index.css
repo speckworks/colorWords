@@ -138,6 +138,7 @@ h5{
  }
 
  .button-container {
+   align-items: center;
   background-color: #000000; /* Green */
   border-radius: 25px;
   width: 90%;
@@ -156,8 +157,8 @@ h5{
 
 .ul-wrapper {
   align-items: center;
-  padding:20px;
-  margin: 0 auto;
+  padding:-50px;
+  margin:-5px;
   width:100%;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
