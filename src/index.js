@@ -19,12 +19,12 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             let quoteObj = quotesArr.filter(quote => (quote.category == `${categoryPressed}`
             ))
             let quoteDiv = document.querySelector('#quote-div')
-            let innerQuoteDiv = document.createElement('div')
+            let innerQuoteDiv = document.createElement('li')
             let userNameContainer = document.createElement('h3')
             let quoteCategory = document.createElement('h4')
             let quoteContainer = document.createElement('h5')
             innerQuoteDiv.className = "quote-div"
-            innerQuoteDiv.id = "quote-div"
+            // innerQuoteDiv.id = "quote-div"
             userNameContainer.className = "card"
             quoteCategory.className = "card"
             innerQuoteDiv.style.borderRadius = "25px";
@@ -38,9 +38,11 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             userNameContainer.innerText = "User:" + " " + userNameEntered 
             // console.log(quoteObj[0].text, "afterappended")
             quoteCategory.innerText = "Category:"+categoryPressed + " "
-            // let magicNumber = Math.floor((Math.random(quotesArr.length) * 10))
-            // console.log("magic number", magicNumber)
-            quoteContainer.innerText = quoteObj[2].text + " "+"-"+ quoteObj[2].author 
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+            quoteContainer.innerText = quoteObj[getRandomInt(7)].text + " "+"-"+ quoteObj[getRandomInt(7)].author 
+            console.log("rand", getRandomInt(7));
             quoteContainer.textAlign = "center"
             //create delete button on userQuote
             let deleteButton = document.createElement('button')

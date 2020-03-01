@@ -24,24 +24,24 @@ body{
     transform: translateX(0);
   }
 }
-
 .quote-div { 
 display: inline-block;
 border-radius: 10px;
-height: 500px;
+height: 100%;
 width:100%;
 padding:10px;
 font-size: large;
 color:honeydew;
 background-image : url("./assets/papyrus.png");
 background-repeat: repeat;
-/* text-align: center; */
+text-align: center;
 word-wrap: break-word;
 word-break: break-all;
 animation: 1s ease-out 0s 1 slideInFromLeft;
+border:groove;
+border-width: 2vh;
+margin: 2px;
 }
-
-
 .card { 
   display: inline-block;
   width: 90%;
@@ -51,7 +51,7 @@ animation: 1s ease-out 0s 1 slideInFromLeft;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(4, 4fr);
-  grid-column-gap: 2px;
+  grid-column-gap: 5px;
   position: relative;
   width:90%;
   height: 100%;
@@ -63,7 +63,6 @@ animation: 1s ease-out 0s 1 slideInFromLeft;
   word-break: break-all;
   animation: 1s ease-out 0s 1 slideInFromLeft;
   }
-  
   .item:nth-child(4) {
    order: -1;
   }
@@ -71,12 +70,11 @@ animation: 1s ease-out 0s 1 slideInFromLeft;
   .item:nth-child(2) {
     order: 1;
   }
-  
 
 .card{
   display: grid;
   grid-row: auto;
-  width: 80%;
+  width: 100%;
   height: 30px;
 }
 /* Added for aesthetics body {margin: 0;font-family: "Segoe UI", Arial, Helvetica, Sans Serif;} a {text-decoration: none; display: inline-block; margin-right: 10px; color:#fff;} */
@@ -151,9 +149,6 @@ h5{
   cursor: pointer;
   word-wrap: break-word;
  }
-
-
-
 .ul-wrapper {
   align-items: center;
   padding:-50px;
@@ -161,13 +156,11 @@ h5{
   width:100%;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
-
 .title {
   font-family: Garamond;
   font-size: 60px;
   text-align: center;
 }
-
 .container{
     height: 200px;
     width:100%;
@@ -176,7 +169,6 @@ h5{
     background-repeat: no-repeat;
     text-align: center;
 }
-  
 .button1 {background-color: #4CAF50;
   border-radius: 25px;
   background: #73AD21;
@@ -224,7 +216,6 @@ h5{
   background-color: red; /* For browsers that do not support gradients */
   background-image: linear-gradient(red, yellow); /* Standard syntax (must be last) */
 }
-
 .update-button {
   background-color: #4CAF50; /* Green */
   border: none;
