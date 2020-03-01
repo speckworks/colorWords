@@ -24,25 +24,22 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
             let quoteCategory = document.createElement('h4')
             let quoteContainer = document.createElement('h5')
             innerQuoteDiv.className = "quote-div"
-            // innerQuoteDiv.id = "quote-div"
             userNameContainer.className = "card"
             quoteCategory.className = "card"
             innerQuoteDiv.style.borderRadius = "25px";
-            // quoteDiv.style.backgroundColor = "turquoise"
             quoteDiv.style.borderRadius = "15px"
-            // quoteContainer.style.backgroundColor = "coral"
             quoteDiv.appendChild(innerQuoteDiv)
             innerQuoteDiv.appendChild(userNameContainer)
             innerQuoteDiv.appendChild(quoteCategory)
             innerQuoteDiv.appendChild(quoteContainer)
             userNameContainer.innerText = "User:" + " " + userNameEntered 
-            // console.log(quoteObj[0].text, "afterappended")
             quoteCategory.innerText = "Category:"+categoryPressed + " "
             function getRandomInt(max) {
                 return Math.floor(Math.random() * Math.floor(max));
             }
             quoteContainer.innerText = quoteObj[getRandomInt(7)].text + " "+"-"+ quoteObj[getRandomInt(7)].author 
             console.log("rand", getRandomInt(7));
+            
             quoteContainer.textAlign = "center"
             //create delete button on userQuote
             let deleteButton = document.createElement('button')
