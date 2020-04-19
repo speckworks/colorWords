@@ -38,7 +38,6 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
                 return Math.floor(Math.random() * Math.floor(max));
             }
             quoteContainer.innerText = quoteObj[getRandomInt(7)].text + " "+"-"+ quoteObj[getRandomInt(7)].author 
-            console.log("rand", getRandomInt(7));
             
             quoteContainer.textAlign = "center"
             //create delete button on userQuote
@@ -70,10 +69,6 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
                 })
             }).then((resp) => resp.json())
             .then((respObj) => {
-                // console.log(respObj)
-                // console.log(
-                //     quotesArr[(respObj.quote_id)-1].text
-                // )
 
                 //delete userQuote from the database with callback "makeDeleteFetch" Function
                 innerQuoteDiv.setAttribute('id',respObj.id)
@@ -115,7 +110,6 @@ buttonListener.addEventListener('click',  //initial userquote generation eventli
                     })
                     .then((res) => res.json())
                     .then((updatedQuote) => {
-                        // console.log(updatedQuote)
                     })
             }) //inside eventListener on click to Update userQuote
             
@@ -160,7 +154,6 @@ function reverseTextFunction (quoteContainer, quoteObj){
     }
     // console.log(reverseString())
     quoteContainer.innerText = reverseString()
-    // console.log("inside the reverse function")
 }
 
 
